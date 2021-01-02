@@ -13,6 +13,7 @@ namespace Ui {
 class AddVariable;
 }
 
+
 class AddVariable : public QDialog
 {
     Q_OBJECT
