@@ -1,4 +1,5 @@
 #include"field.h"
+#define zgy yongren
 Double::Double()
 {
 	value = 0.0;
