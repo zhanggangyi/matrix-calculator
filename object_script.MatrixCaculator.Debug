@@ -1,0 +1,15 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\myalgorithm.o
+./debug\variablemanager.o
+./debug\basestructre.o
+./debug\addvariable.o
+./debug\editvariable.o
+./debug\computation.o
+./debug\Qnum.o
+./debug\Double.o
+./debug\moc_mainwindow.o
+./debug\moc_addvariable.o
+./debug\moc_editvariable.o
+);

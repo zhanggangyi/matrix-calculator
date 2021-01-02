@@ -1,0 +1,15 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\myalgorithm.o
+./release\variablemanager.o
+./release\basestructre.o
+./release\addvariable.o
+./release\editvariable.o
+./release\computation.o
+./release\Qnum.o
+./release\Double.o
+./release\moc_mainwindow.o
+./release\moc_addvariable.o
+./release\moc_editvariable.o
+);
