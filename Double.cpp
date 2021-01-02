@@ -8,7 +8,7 @@ Double Double::operator+(const Double& other) const
 {
 	Double result;
 	result.value = value + other.value;
-	return result;
+    return result;
 }
 Double Double::operator-(const Double& other) const
 {
