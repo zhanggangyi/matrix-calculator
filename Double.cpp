@@ -1,5 +1,5 @@
 #include"field.h"
-
+#define zzz yong
 Double::Double()
 {
 	value = 0.0;
