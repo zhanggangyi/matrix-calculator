@@ -37,12 +37,11 @@ bool caculate(QStringList expression, VariableManager* manager, QString& rtv){
     }
     Var ans = values.top();
     rtv = ans.toString();
-    if(ans.dataType != NUM_TYPE){
-        if(manager->exist(ans.name))
-            manager->set(ans.name, ans);
-        else
-            manager->add(ans);
-    }
+    if(manager->exist(ans.name))
+        manager->set(ans.name, ans);
+    else
+        manager->add(ans);
+
     return true;
 }
 

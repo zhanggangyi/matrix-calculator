@@ -125,11 +125,14 @@ void EditVariable::on_confirm_clicked()
         }
     }
     // 检测变量是否重复
-    if(!manager->set(old.name, box)){
-            QMessageBox::warning(this, "警告", "变量名不能与已有变量名重复", QStringLiteral("确定"));
-            ui->variable_name->clear();
-        }
-    else{
+    if(manager->exist(box.name)&&box.name!=old.name)
+    {
+        QMessageBox::warning(this, "警告", "变量名不能与已有变量名重复", QStringLiteral("确定"));
+        ui->variable_name->clear();
+    }
+    else
+    {
+        manager->set(old.name, box);
         this->close();
     }
 }

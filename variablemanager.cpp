@@ -33,6 +33,7 @@ bool VariableManager::add(Var var)
     QStandardItem* data_type = new QStandardItem{typeName[var.dataType]};
     QStandardItem* num_type = new QStandardItem{numName[var.numType]};
     QStandardItem* value = new QStandardItem{var.toString()};
+    //这里要改一下
     list_model->setItem(row, name);
     list_model->setItem(row, 1, data_type);
     list_model->setItem(row, 2, num_type);
@@ -70,9 +71,16 @@ bool VariableManager::del()
     return true;
 }
 
-void VariableManager::refresh(Var var)
+void VariableManager::refresh(Var var)          //在list中刷新变量的值
 {
     // 更改变量
+    int prvRow=currentRow;
+    for(int i=0;i<row;i++)
+        if(var.name==vars[i].name)
+        {
+            currentRow=i;
+            break;
+        }
     vars[currentRow] = var;
     QStandardItem* name = new QStandardItem{var.name};
     QStandardItem* data_type = new QStandardItem{typeName[var.dataType]};
@@ -85,29 +93,35 @@ void VariableManager::refresh(Var var)
     // 显示
     view->setModel(list_model);
     view->show();
+    currentRow=prvRow;
 }
 
-bool VariableManager::set(QString name_, Var var)
+bool VariableManager::set(QString name_, Var var)       //将名为name的变量值赋为var
 {
-    if(name_ != var.name){
-        // 检测有无重名变量
-        for(const auto& item:vars)
-            if(item.name == var.name)
-                return false;
-        // 若是矩阵，修改对应名称
-        if(var.dataType == MATRIX_TYPE){
-            mList->setItemText(mList->findText(name_), var.name);
+    Var* ptr;
+    if(!exist(name_))
+        return false;
+    for(auto& item:vars)
+        if(item.name == name_)
+        {
+            ptr=&item;
+            break;
         }
-    }
+    ptr->name=var.name;
+    ptr->dataType=var.dataType;
+    ptr->numType=var.numType;
+    ptr->val=var.val;
+
     refresh(var);
     // 若是矩阵 刷新矩阵列表
     if(var.dataType == MATRIX_TYPE){
-        emit mList->currentIndexChanged(mList->currentText());
+        //这里有大问题
+       this->showMatrix(var.name);
     }
     return true;
 }
 
-bool VariableManager::get(QString name, Var* box)
+bool VariableManager::get(QString name, Var* box)       //寻找名为name的变量
 {
     for(Var item: vars){
         if(item.name == name){

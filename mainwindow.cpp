@@ -167,15 +167,21 @@ void MainWindow::on_Equal_clicked()
         ui->InputLine->setText(result);
         return;
     }
+
     QStandardItem* expr = new QStandardItem{expression + "=" + result};
     history->appendRow(expr);
     ui->History->setModel(history);
 
+    /*
     Var b;
-    ui->matrixView->clear();
     manager->get(result, &b);
-    manager->setCurrentMatrix(result);
-    ui->matrixList->setCurrentText(b.name);
+    if(b.dataType==MATRIX_TYPE)
+    {
+        ui->matrixView->clear();
+        manager->setCurrentMatrix(b.name);
+        ui->matrixList->setCurrentText(b.name);
+    }
+    */
 }
 
 void MainWindow::on_Clear_clicked()
