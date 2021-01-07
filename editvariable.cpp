@@ -133,6 +133,7 @@ void EditVariable::on_confirm_clicked()
     else
     {
         manager->set(old.name, box);
+        manager->showMatrix(box.name);
         this->close();
     }
 }

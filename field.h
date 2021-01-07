@@ -62,6 +62,29 @@ public:
 	  Double& assign();							//赋值为1
 };
 
+class Complex{          //复数类
+public:
+    Double re;
+    Double im;
+    Complex operator+(const Complex& other) const;
+    Complex operator-(const Complex& other) const;
+    Complex operator-() const;
+    Complex operator*(const Complex& other) const;
+    Complex operator/(const Complex& other) const;
+    Complex& operator+=(const Complex& other);
+    Complex& operator-=(const Complex& other);
+    Complex& operator*=(const Complex& other);
+    Complex& operator/=(const Complex& other);
+    Complex& operator=(const Complex& other);
+    bool operator==(const Complex& other) const;
+    bool operator>(const Complex& other) const;
+    bool operator<(const Complex& other) const;
+    Complex conj();							//共轭
+    bool judge();                            //判断是否为1
+    Complex& assign();							//赋值为1
+};
+
 int gcd(int m, int n);
 Qnum toRational(QString s);
+QString toQstring(const Complex& num);
 QString toQstring(const Qnum& num);

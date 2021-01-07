@@ -111,11 +111,12 @@ bool VariableManager::set(QString name_, Var var)       //将名为name的变量
     ptr->dataType=var.dataType;
     ptr->numType=var.numType;
     ptr->val=var.val;
-
     refresh(var);
     // 若是矩阵 刷新矩阵列表
     if(var.dataType == MATRIX_TYPE){
-        //这里有大问题
+       // 改mList中矩阵的名称
+       int pos = mList->findText(name_);
+       mList->setItemText(pos, var.name);
        this->showMatrix(var.name);
     }
     return true;

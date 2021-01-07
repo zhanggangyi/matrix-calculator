@@ -78,11 +78,13 @@ void AddVariable::on_confirm_clicked()
         }
     }
     // 检测变量是否重复
-    if(!manager->add(box)){
-            QMessageBox::warning(this, "警告", "变量名不能与已有变量名重复", QStringLiteral("确定"));
-            ui->variable_name->clear();
-        }
-    else{
+    if(!manager->add(box))
+    {
+        QMessageBox::warning(this, "警告", "变量名不能与已有变量名重复", QStringLiteral("确定"));
+        ui->variable_name->clear();
+    }
+    else
+    {
         this->clear();
         if(data_type=MATRIX_TYPE)
         {

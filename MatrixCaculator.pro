@@ -35,7 +35,8 @@ SOURCES += \
     editvariable.cpp \
     computation.cpp \
     Qnum.cpp \
-    Double.cpp
+    Double.cpp \
+    complex.cpp
 
 HEADERS += \
         mainwindow.h \
