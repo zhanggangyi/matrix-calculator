@@ -10,37 +10,47 @@ QStringList split(QString input){
     return stringlist;
 }
 
-bool caculate(QStringList expression, VariableManager* manager, QString& rtv){
+bool caculate(QStringList expression, VariableManager* manager, QString& rtv)
+{
     QStack<Var> values;
     QString mani, s;
-    while(!expression.empty()){
-        s = expression.first(); expression.pop_front();
-        // 如果是操作符
-        if (pattern_operator.match(s).hasMatch()){
-            mani = s;
-            Var v1 = values.top(); values.pop();
-            Var v2 = values.top(); values.pop();
-            Var result;
-            try{
-                run(v2, v1, mani, result);
-            }
-            catch(const exception& e)
+    try
+    {
+        while(!expression.empty())
+        {
+            s = expression.first(); expression.pop_front();
+            // 如果是操作符
+            if (pattern_operator.match(s).hasMatch())
             {
-                rtv = e.what();
-                return false;
+                mani = s;
+                if(values.empty())
+                    throw(std::exception());
+                Var v1 = values.top(); values.pop();
+                if(values.empty())
+                    throw(std::exception());
+                Var v2 = values.top(); values.pop();
+                Var result;
+                run(v2, v1, mani, result);
+                values.push(result);
             }
-            values.push(result);
+            else{
+                values.push_back(Var(s));
+            }
         }
-        else{
-            values.push_back(Var(s));
-        }
+
+        Var ans = values.top();
+        rtv = ans.toString();
+        if(manager->exist(ans.name))
+            manager->set(ans.name, ans);
+        else
+            manager->add(ans);
     }
-    Var ans = values.top();
-    rtv = ans.toString();
-    if(manager->exist(ans.name))
-        manager->set(ans.name, ans);
-    else
-        manager->add(ans);
+    catch(const exception& e)
+    {
+        rtv = "";
+        QMessageBox::warning(nullptr, "警告", "输入非法", QStringLiteral("确定"));
+        return false;
+    }
 
     return true;
 }

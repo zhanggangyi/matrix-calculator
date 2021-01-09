@@ -44,6 +44,12 @@ bool VariableManager::add(Var var)
     // 显示
     view->setModel(list_model);
     view->show();
+    if(var.dataType==MATRIX_TYPE)
+    {
+        int pos = mList->findText(var.name);
+        mList->setItemText(pos, var.name);
+        this->showMatrix(var.name);
+    }
     return true;
 }
 
@@ -235,5 +241,6 @@ bool VariableManager::paste()
 
 void VariableManager::showMatrix(const QString &s)
 {
+    emit mList->currentIndexChanged(s);
     mList->setCurrentText(s);
 }

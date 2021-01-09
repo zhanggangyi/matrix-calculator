@@ -27,24 +27,59 @@ Complex Complex::operator*(const Complex& other) const
     result.im=this->re*other.im+this->im*other.re;
     return result;
 }
+/*
 Complex Complex::operator/(const Complex& other) const
 {
     Complex result;
+    result=*this*conj(other);
+    Double fenmu=(other*conj(other)).re;
+    result.re/=fenmu;
+    result.im/=fenmu;
     return result;
 }
-/*
-Complex& Complex::operator+=(const Complex& other);
-Complex& Complex::operator-=(const Complex& other);
-Complex& Complex::operator*=(const Complex& other);
-Complex& Complex::operator/=(const Complex& other);
-Complex& Complex::operator=(const Complex& other);
-bool Complex::operator==(const Complex& other) const;
-bool Complex::operator>(const Complex& other) const;
-bool Complex::operator<(const Complex& other) const;
-Complex rec();							//倒数
-Complex conj();							//共轭
-bool judge();                            //判断是否为1
-Complex& assign();							//赋值为1
 
+Complex& Complex::operator+=(const Complex& other)
+{
+    *this=*this+other;
+    return *this;
+}
+Complex& Complex::operator-=(const Complex& other)
+{
+    *this=*this-other;
+    return *this;
+}
+
+Complex& Complex::operator*=(const Complex& other)
+{
+    *this=*this*other;
+    return *this;
+}
+
+Complex& Complex::operator/=(const Complex& other)
+{
+    *this=*this/other;
+    return *this;
+}
+
+Complex& Complex::operator=(const Complex& other)
+{
+    this->im=other.im;
+    this->re=other.re;
+    return *this;
+}
+
+bool Complex::operator==(const Complex& other) const
+{
+    if(this->im==other.im&&this->re==other.re)
+        return true;
+    else
+        return false;
+}
+
+bool judge();                            //判断是否为1
+{
+}
+Complex& assign();							//赋值为1
+Complex conj(Complex num);
 QString toQstring(const Complex& num);
 */

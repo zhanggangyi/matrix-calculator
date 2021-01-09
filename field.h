@@ -78,12 +78,11 @@ public:
     Complex& operator=(const Complex& other);
     bool operator==(const Complex& other) const;
     bool operator>(const Complex& other) const;
-    bool operator<(const Complex& other) const;
-    Complex conj();							//共轭
+    bool operator<(const Complex& other) const;					
     bool judge();                            //判断是否为1
     Complex& assign();							//赋值为1
 };
-
+Complex conj(Complex num);		//共轭
 int gcd(int m, int n);
 Qnum toRational(QString s);
 QString toQstring(const Complex& num);

@@ -36,7 +36,8 @@ SOURCES += \
     computation.cpp \
     Qnum.cpp \
     Double.cpp \
-    complex.cpp
+    complex.cpp \
+    subwindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -47,9 +48,11 @@ HEADERS += \
     editvariable.h \
     computation.h \
     field.h \
-    matrix.h
+    matrix.h \
+    subwindow.h
 
 FORMS += \
         mainwindow.ui \
     addvariable.ui \
-    editvariable.ui
+    editvariable.ui \
+    subwindow.ui

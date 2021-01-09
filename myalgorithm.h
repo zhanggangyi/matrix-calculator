@@ -12,6 +12,9 @@
 #include "basestructure.h"
 #include "computation.h"
 #include "variablemanager.h"
+#include <exception>
+#include <QMessageBox>
+
 
 using namespace std;
 
