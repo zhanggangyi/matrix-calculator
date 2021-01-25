@@ -188,6 +188,13 @@ void initComputaion()
     result.val.nRational = b1.val.mRational.determinant();
     return result;};
 
+    //单位矩阵
+    /*
+    func[DET][MATRIX_TYPE][RATIONAL_NUM][NONE_TYPE][RATIONAL_NUM] = [](const Var& b1, const Var& b2){
+    Var result{"result", MATRIX_TYPE, RATIONAL_NUM};
+    result.val.nRational = b1.val.mRational.determinant();
+    return result;};
+    */
 
 
 

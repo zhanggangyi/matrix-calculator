@@ -1,6 +1,6 @@
 #ifndef ADDVARIABLE_H
 #define ADDVARIABLE_H
-
+//jsshigou
 #include <QDialog>
 #include <QButtonGroup>
 #include <QMessageBox>

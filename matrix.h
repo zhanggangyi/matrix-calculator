@@ -132,7 +132,7 @@ public:
     Polynomial<T> eigenpoly();							  //特征多项式
     void rcf();                                           //有理标准型
     void nor();                                           //法式
-    Polynomial<T> minimalpoly() ;                    //极小多项式
+    Polynomial<T> minimalpoly() ;                       //极小多项式
     Vector<Polynomial<T>> get_factor(bool mode) ;                // mode=0 行列式因子  mode=1 不变因子
     Matrix<Polynomial<T>>* toLambdaMatrix();                    //转化为特征矩阵
 	void scan();
